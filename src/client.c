@@ -31,6 +31,9 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+#ifdef __OpenBSD__
+#include <sys/ucred.h>
+#endif
 #include <arpa/inet.h>
 #include <pthread.h>
 #include <fcntl.h>
@@ -189,7 +192,7 @@ int client_accept(int listenfd)
 	collection_add(&client_list, client);
 	pthread_mutex_unlock(&client_list_mutex);
 
-#ifdef SO_PEERCRED
+#if defined(SO_PEERCRED) && !defined(__OpenBSD__)
 	if (log_level >= LL_INFO) {
 		struct ucred cr;
 		len = sizeof(struct ucred);

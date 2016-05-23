@@ -110,10 +110,10 @@ case ${host_os} in
     AC_SUBST(WINDRES)
     activation_method="manual"
     ;;
-  darwin*)
+  darwin*|*openbsd*)
     win32=false
     AC_MSG_RESULT([no])
-    # No support for launchd yet
+    # No support for launchd or rc yet
     activation_method="manual"
     ;;
   *)

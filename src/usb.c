@@ -36,7 +36,7 @@
 #include "device.h"
 #include "utils.h"
 
-#if (defined(LIBUSB_API_VERSION) && (LIBUSB_API_VERSION >= 0x01000102)) || (defined(LIBUSBX_API_VERSION) && (LIBUSBX_API_VERSION >= 0x01000102))
+#if (defined(LIBUSB_API_VERSION) && (LIBUSB_API_VERSION >= 0x01000102)) || (defined(LIBUSBX_API_VERSION) && (LIBUSBX_API_VERSION >= 0x01000102)) && !defined(__OpenBSD__)
 #define HAVE_LIBUSB_HOTPLUG_API 1
 #endif
 
